@@ -3,9 +3,15 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1> Home page </h1>')
+    return render(request, 'home.html', {'name' : 'ICT4'})
+
+def add(request):
+    num1 = int(request.GET['num1'])
+    num2 = int(request.GET['num2'])
+    res = num1 + num2
+    return render(request, 'result.html', {'result':res})
 
 def data(request):
-        if request == 'GET':
-            name = request.GET['name']
-        print(name)
+        
+        name = request.GET['name']
+        return HttpResponse(name)
