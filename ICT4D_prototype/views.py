@@ -31,4 +31,3 @@ def dummy(request):
         uploaded_file_url = fs.url(filename)
         name = Person(first_name="one", last_name="test", voice = uploaded_file_url)
         name.save()
-        return HttpResponse("HI")
