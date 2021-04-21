@@ -21,7 +21,6 @@ def data(request):
         name = request.GET['name']
         return HttpResponse(name)
 
-@csrf_exempt
 def dummy(request):
     #num1 = request.GET['where']
     if request.method == 'POST' and request.FILES['voice']:
