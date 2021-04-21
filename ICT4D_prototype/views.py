@@ -24,10 +24,10 @@ def data(request):
 @csrf_exempt
 def dummy(request):
     #num1 = request.GET['where']
-    if request.method == 'POST' and request.FILES['voice']:
-        myfile = request.FILES['voice']
+    if request.method == 'POST' and request.FILES['recording']:
+        myfile = request.FILES['recording']
         fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
+        filename = fs.save(myfile, myfile)
         uploaded_file_url = fs.url(filename)
         name = Person(first_name="one", last_name="test", voice = uploaded_file_url)
         name.save()
