@@ -22,7 +22,8 @@ def data(request):
 @csrf_exempt
 def dummy(request):
     #num1 = request.GET['where']
-    record = request.POST.get('voice', False)
-    name = Person(first_name="one", last_name="test", voice = record )
+    record = request.POST['voice']
+        #.get('voice', False)
+    name = Person(first_name="one", last_name="test", voice = record)
     name.save()
     return HttpResponse("HI")
