@@ -19,7 +19,7 @@ def data(request):
         return HttpResponse(name)
 
 def dummy(request):
-    num1 = request.GET['where']
-    record = request.GET['voice']
+    num1 = request.POST['where']
+    record = request.POST['testvoice']
     name = Person(first_name=num1, last_name="test", voice = record )
     name.save()
