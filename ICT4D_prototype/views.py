@@ -19,13 +19,10 @@ def data(request):
         return HttpResponse(name)
 
 def dummy(request):
-<<<<<<< HEAD
     num1 = request.POST['where']
     record = request.POST['testvoice']
     name = Person(first_name=num1, last_name="test", voice = record )
-=======
     #num1 = request.GET['where']
     record = request.GET['voice']
     name = Person(first_name="one", last_name="test", voice = record )
->>>>>>> 10ad1c24533dec846ee6551ed78dae986bb8b824
     name.save()
