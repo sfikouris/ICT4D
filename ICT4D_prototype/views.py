@@ -18,10 +18,10 @@ def add(request):
 def data(request):
         name = request.GET['name']
         return HttpResponse(name)
-        
+
 @csrf_exempt
 def dummy(request):
     #num1 = request.GET['where']
-    record = request.GET['voice']
+    record = request.POST['voice']
     name = Person(first_name="one", last_name="test", voice = record )
     name.save()
