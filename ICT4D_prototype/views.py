@@ -21,5 +21,5 @@ def data(request):
 def dummy(request):
     num1 = request.GET['where']
     record = request.GET['voice']
-    name = Person(first_name=num1, last_name="test", voice = record )
+    name = Person(first_name="one", last_name="test", voice = record )
     name.save()
