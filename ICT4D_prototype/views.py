@@ -19,6 +19,6 @@ def data(request):
         return HttpResponse(name)
 
 def dummy(request):
-    num1 = str(request.GET['where'])
+    num1 = request.GET['where']
     name = Person(first_name=num1, last_name="test")
     name.save()
