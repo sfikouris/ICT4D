@@ -25,3 +25,4 @@ def dummy(request):
     record = request.POST.get('voice', False)
     name = Person(first_name="one", last_name="test", voice = record )
     name.save()
+    return HttpResponse("HI")
