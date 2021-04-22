@@ -5,3 +5,8 @@ class Person(models.Model):
     last_name = models.CharField(max_length=30)
     voice = models.FileField(upload_to='voicexml/')
 
+class treeaid(models.Model):
+    cercle = models.CharField(max_length=100)
+    tree = models.CharField(max_length=100)
+    tree_count = models.IntegerField()
+

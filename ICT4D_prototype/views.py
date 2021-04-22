@@ -4,7 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 from ICT4D_prototype.models import Person
+from ICT4D_prototype.models import treeaid
 
+cercles = ["Sikasso","Koutiala","Bougouni","Kadiolo","Kolondiéba","Yanfolila","Yorosso"]
+trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon"]
 
 def home(request):
     return render(request, 'home.html', {'name' : 'ICT4'})
@@ -19,10 +22,27 @@ def data(request):
         name = request.GET['name']
         return HttpResponse(name)
 
+
 @csrf_exempt
 def dummy(request):
+    cercle_num = int(request.GET['cercle'])
+    cercle = cercles[cercle_num-1]
+
+    tree_num = int(request.GET['tree'])
+    tree = trees[tree_num-1]
+
+    tree_count = int(request.GET['tree_count'])
+
+    data = treeaid()
+    data.cercle = cercle
+    data.tree = tree
+    data.tree_count = tree_count
+    data.save()
+    return render(request, 'home.html', {'name' : 'ICT4'})
+
+
     #num1 = request.GET['where']
-    record = request.POST.get('voice', False)
-    name = Person(first_name="one", last_name="test", voice = record)
-    name.save()
-    return HttpResponse("HI")
+    #record = request.POST.get('voice', False)
+    #name = Person(first_name="one", last_name="test", voice = record)
+    #name.save()
+    #return HttpResponse("HI")
