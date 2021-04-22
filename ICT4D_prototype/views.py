@@ -25,10 +25,10 @@ def data(request):
 
 @csrf_exempt
 def dummy(request):
-    cercle_num = int(request.GET['cercle'])
+    cercle_num = int(request.GET['cercle_num'])
     cercle = cercles[cercle_num-1]
 
-    tree_num = int(request.GET['tree'])
+    tree_num = int(request.GET['tree_num'])
     tree = trees[tree_num-1]
 
     tree_count = int(request.GET['tree_count'])
