@@ -6,8 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from ICT4D_prototype.models import Person
 from ICT4D_prototype.models import treeaid
 
-cercles = ["Sikasso","Koutiala","Bougouni","Kadiolo","Kolondiéba","Yanfolila","Yorosso"]
-trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon"]
+cercles = ["Bougouni","Kadiolo","Kolondieba","Koutiala","Skasso","Yanfolila","Yorosso"]
+trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon", "Unknown"]
 
 def home(request):
     return render(request, 'home.html', {'name' : 'ICT4'})
