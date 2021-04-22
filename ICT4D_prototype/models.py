@@ -9,4 +9,5 @@ class treeaid(models.Model):
     cercle = models.CharField(max_length=100)
     tree = models.CharField(max_length=100)
     tree_count = models.IntegerField()
+    phone_number = models.CharField(max_length=30)
 

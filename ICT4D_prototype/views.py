@@ -33,12 +33,17 @@ def dummy(request):
 
     tree_count = int(request.GET['tree_count'])
 
+    phone_number = request.GET['phone']
+
     data = treeaid()
     data.cercle = cercle
     data.tree = tree
     data.tree_count = tree_count
+    data.phone_number = phone_number
     data.save()
-    return render(request, 'home.html', {'name' : 'ICT4'})
+    return HttpResponse(status=200)
+
+    #return render(request, 'home.html', {'name' : 'ICT4'})
 
 
     #num1 = request.GET['where']
