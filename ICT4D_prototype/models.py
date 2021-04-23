@@ -13,5 +13,5 @@ class treeaid(models.Model):
 
 class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to='documents/')
+    document = models.FileField(upload_to='media/')
 
