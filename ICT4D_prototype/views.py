@@ -24,7 +24,8 @@ def data(request):
 @csrf_exempt
 def simple_upload(request):
     form = DocumentForm(request.POST, request.FILES)
-    form.save()
+    if form.is_valid():
+        form.save()
     return HttpResponse(status=200)
     
 
