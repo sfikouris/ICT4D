@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from .form import DocumentForm
+
 
 # Create your views here.
 from ICT4D_prototype.models import Person
@@ -12,16 +16,17 @@ trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khay
 def home(request):
     return render(request, 'home.html', {'name' : 'ICT4'})
 
-def add(request):
-    num1 = int(request.GET['num1'])
-    num2 = int(request.GET['num2'])
-    res = num1 + num2
-    return render(request, 'result.html', {'result':res})
 
 def data(request):
         name = request.GET['name']
         return HttpResponse(name)
 
+@csrf_exempt
+def simple_upload(request):
+    form = DocumentForm(request.POST, request.FILES)
+    form.save()
+    return HttpResponse(status=200)
+    
 
 @csrf_exempt
 def dummy(request):

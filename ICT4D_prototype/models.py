@@ -11,3 +11,7 @@ class treeaid(models.Model):
     tree_count = models.IntegerField()
     phone_number = models.CharField(max_length=30)
 
+class Document(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='documents/')
+
