@@ -21,6 +21,13 @@ def data(request):
         name = request.GET['name']
         return HttpResponse(name)
 
+def numberCheck(request):
+    phoneNumber = request.GET['phone']
+    if treeaid.objects.filter(phone_number=phoneNumber).exists():
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=404)
+
 @csrf_exempt
 def simple_upload(request):
     form = DocumentForm(request.POST, request.FILES)
