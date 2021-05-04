@@ -7,4 +7,5 @@ urlpatterns = [
     path('dummy', views.dummy, name='ICT4_prototype-dummy'),
     path('simple_upload', views.simple_upload, name='ICT4_prototype-simple_upload'),
     path('numberCheck', views.numberCheck, name='ICT4_prototype-numberCheck'),
+    path('result', views.result, name='result'),
 ]
