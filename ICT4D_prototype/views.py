@@ -14,15 +14,16 @@ cercles = ["Sikasso","Koutiala","Bougouni","Kadiolo","Kolondiéba","Yanfolila","
 trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon", "Unknown"]
 
 def home(request):
-    query_results = treeaid.objects.all()
+    query_results = treeaid.objects.order_by('phone_number') 
+    #query_results = treeaid.objects.all()
     return render(request, 'home.html', {'query_results' : query_results})
 
 
 def result(request):
-    cercle = request.GET['cercle_id']
-    tree = request.GET['tree_id']
-    phone_number = request.GET['phone_number']
-    tree_count = request.GET['tree_num']
+    cercle = request.POST['cercle_id']
+    tree = request.POST['tree_id']
+    phone_number = request.POST['phone_number']
+    tree_count = request.POST['tree_num']
     
     data = treeaid()
     data.cercle = cercle
@@ -31,7 +32,8 @@ def result(request):
     data.phone_number = phone_number
     data.save()
 
-    query_results = treeaid.objects.all()
+    query_results = treeaid.objects.order_by('phone_number') 
+
 
     return render(request,"home.html",{'query_results' : query_results})
 

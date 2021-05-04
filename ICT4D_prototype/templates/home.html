@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>hello and welcome to {{name}} </h1>
+    <h1>hello and welcome to N DEME JIRI </h1>
 
-    <form action="result">
+    <form action="result" method='post'>
+
+        {%csrf_token%}
+
         Enter your phone number : <input type = "text" name="phone_number"><br>
         Select Cercle: 
         <input list="Cercles" name="cercle_id">
