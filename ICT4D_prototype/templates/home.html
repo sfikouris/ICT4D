@@ -35,17 +35,17 @@
     
     <table>
         <tr>
+            <th>Phone number</th>
             <th>Cercle</th>
             <th>Tree</th>
             <th>Tree count</th>
-            <th>Phone number</th>
         </tr>
         {% for item in query_results %}
         <tr> 
+            <td>{{ item.phone_number }}</td>
             <td>{{ item.cercle }}</td>
             <td>{{ item.tree }}</td>
             <td>{{ item.tree_count }}</td>
-            <td>{{ item.phone_number }}</td>
         </tr>
         {% endfor %}
     </table>
