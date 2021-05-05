@@ -24,7 +24,7 @@ urlpatterns = [
     path('data/', include('ICT4D_prototype.urls')),
     path('simple_upload/', include('ICT4D_prototype.urls')),
     path('dummy/', include('ICT4D_prototype.urls')),
-
+    path('map/', include('ICT4D_prototype.urls')),
 ] 
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

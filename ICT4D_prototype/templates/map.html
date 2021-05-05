@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+
+<div style="width: 100%;">
+    <div style="width: 50%; height: 800px; float: left;">
+        <h1>Mapping of recordings</h1>
+          {{my_map|safe}}
+        <script>
+          {{my_map|safe}}
+        </script>
+    </div>
+    <div style="margin-left: 50%; height: 800px; background: white;">
+        table here
+    </div>
+</div>
+
+</body>
+
+{%endblock%}

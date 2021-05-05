@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from .form import DocumentForm
+import folium
 
 
 # Create your views here.
@@ -84,3 +85,15 @@ def dummy(request):
     #name = Person(first_name="one", last_name="test", voice = record)
     #name.save()
     #return HttpResponse("HI")
+
+
+def map(request):
+    m = folium.Map(
+        location=[45.372, -121.6972],
+        zoom_start=12,
+        tiles='Stamen Terrain'
+    )
+    mstring = m._repr_html_()
+    context = {'my_map': mstring}
+
+    return render(request, 'map.html', context)
