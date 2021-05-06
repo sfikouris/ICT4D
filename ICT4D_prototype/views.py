@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from .form import DocumentForm
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 import folium
 
 
@@ -41,7 +43,7 @@ def result(request):
 
     return render(request,"home.html",{'query_results' : query_results})
 
-@csrf_exempt
+@ensure_csrf_cookie
 def data(request):
     form = DocumentForm(request.POST, request.FILES)
     if form.is_valid():
