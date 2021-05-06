@@ -42,13 +42,14 @@ def result(request):
 
 
     return render(request,"home.html",{'query_results' : query_results})
-
-@ensure_csrf_cookie
+    
+@csrf_exempt
 def data(request):
     form = DocumentForm(request.POST, request.FILES)
     if form.is_valid():
+        form.save()
         
-        cercle_num = int(request.POST['cercle_num'])
+        """cercle_num = int(request.POST['cercle_num'])
         cercle = cercles[cercle_num-1]
         tree_num = int(request.POST['tree_num'])
         tree = trees[tree_num-1]
@@ -70,9 +71,8 @@ def data(request):
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
 
-        instance.save()
-        return HttpResponse(status=200)
-    return HttpResponse(status=404)
+        instance.save()"""
+    return HttpResponse(status=200)
 
 
 def numberCheck(request):

@@ -13,11 +13,11 @@ class treeaid(models.Model):
 
 class Document(models.Model):
     rec_name = models.FileField(upload_to='media/')
-    rec_location  = models.FileField(upload_to='media/')
-    rec_commune = models.FileField(upload_to='media/')
-    cercle_num = models.CharField(max_length=30, null=True)
-    tree_num  = models.CharField(max_length=30, null=True)
-    tree_count   = models.CharField(max_length=30, null=True)
-    chosen_language   = models.CharField(max_length=30, null=True)
-    phone   = models.CharField(max_length=30, null=True)
+    #rec_location  = models.FileField(upload_to='media/')
+    #rec_commune = models.FileField(upload_to='media/')
+    #cercle_num = models.CharField(max_length=30, null=True)
+    #tree_num  = models.CharField(max_length=30, null=True)
+    #tree_count   = models.CharField(max_length=30, null=True)
+    #chosen_language   = models.CharField(max_length=30, null=True)
+    #phone   = models.CharField(max_length=30, null=True)
 
