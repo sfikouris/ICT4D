@@ -17,7 +17,7 @@ from ICT4D_prototype.models import Document
 
 cercles = ["Sikasso","Koutiala","Bougouni","Kadiolo","Kolondiéba","Yanfolila","Yorosso"]
 trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon", "Unknown"]
-language = ["EN","FR","BA"]
+
 
 def home(request):
     query_results = treeaid.objects.order_by('phone_number') 

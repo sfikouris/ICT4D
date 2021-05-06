@@ -19,5 +19,5 @@ class Document(models.Model):
     tree_num  = models.CharField(max_length=30, null=True)
     tree_count = models.IntegerField()
     chosen_language = models.CharField(max_length=30, null=True)
-    phone   = models.CharField(max_length=30, null=True)
+    phone = models.CharField(max_length=30, null=True)
 
