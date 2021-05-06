@@ -63,7 +63,7 @@ def data(request):
 
         tree_count = int(request.POST['tree_count'])
         chosen_language = request.POST['chosen_language']
-        phone_number = request.POST['phone']
+       #phone_number = request.POST['phone']
 
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
@@ -72,7 +72,7 @@ def data(request):
         instance.tree_num = tree
         instance.tree_count = tree_count
         instance.chosen_language = chosen_language
-        instance.phone = phone_number
+        #instance.phone = phone_number
         instance.save()
         
    
