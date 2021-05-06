@@ -14,7 +14,7 @@ class treeaid(models.Model):
 class Document(models.Model):
     rec_commune = models.FileField(upload_to='media/')
     rec_location  = models.FileField(upload_to='media/')
-    rec_name = models.FileField(upload_to='media/')
+    rec_name = models.FileField(upload_to='media/',null=True)
     cercle_num = models.CharField(max_length=30, null=True)
     tree_num  = models.CharField(max_length=30, null=True)
     tree_count = models.CharField(max_length=30, null=True)
