@@ -49,6 +49,10 @@ def data(request):
     if form.is_valid():
         #form.save()
         instance = Document()
+        
+        rec_commune=request.FILES['rec_commune']
+        rec_location=request.FILES['rec_location']
+
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
         instance.save()
@@ -62,8 +66,7 @@ def data(request):
         tree_count = int(request.POST['tree_count'])
         phone_number = request.POST['phone']
         rec_name=request.FILES['rec_name']
-        rec_location=request.FILES['rec_location']
-        rec_commune=request.FILES['rec_commune']
+      
 
         instance.cercle_num = cercle
         instance.tree_num = tree
