@@ -4,4 +4,4 @@ from .models import Document
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('rec_name',)
+        fields = ('rec_commune',)
