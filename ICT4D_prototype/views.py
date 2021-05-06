@@ -59,7 +59,7 @@ def data(request):
         rec_commune=request.FILES['rec_commune']
 
         instance = Document()
-        instance.cercle_num = cercles
+        instance.cercle_num = cercle
         instance.tree_num = tree
         instance.tree_count = tree_count
         instance.phone = phone_number
