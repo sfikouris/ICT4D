@@ -61,7 +61,7 @@ def data(request):
         cercle_num = int(request.POST['cercle_num'])
         cercle = cercles[cercle_num-1]
 
-        tree_count = int(request.POST['tree_count'])
+        tree_count = request.POST['tree_count']
         chosen_language = request.POST['chosen_language']
         phone_number = request.POST['phone']
 
