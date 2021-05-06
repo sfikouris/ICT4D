@@ -47,7 +47,11 @@ def result(request):
 def data(request):
     form = DocumentForm(request.POST, request.FILES)
     if form.is_valid():
-        form.save()
+        #form.save()
+        instance = Document()
+        instance.rec_commune = rec_commune
+        instance.rec_location = rec_location
+        instance.save()
         
         """cercle_num = int(request.POST['cercle_num'])
         cercle = cercles[cercle_num-1]
@@ -61,17 +65,13 @@ def data(request):
         rec_location=request.FILES['rec_location']
         rec_commune=request.FILES['rec_commune']
 
-        instance = Document()
         instance.cercle_num = cercle
         instance.tree_num = tree
         instance.tree_count = tree_count
         instance.phone = phone_number
         instance.chosen_language = language_user
         instance.rec_name = rec_name
-        instance.rec_commune = rec_commune
-        instance.rec_location = rec_location
-
-        instance.save()"""
+       """
     return HttpResponse(status=200)
 
 
