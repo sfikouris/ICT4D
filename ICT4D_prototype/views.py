@@ -53,14 +53,17 @@ def data(request):
         rec_commune=request.FILES['rec_commune']
         rec_location=request.FILES['rec_location']
 
+        tree_num = int(request.POST['tree_num'])
+        tree = trees[tree_num-1]
+
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
+        instance.tree_num = tree
         instance.save()
         
         """cercle_num = int(request.POST['cercle_num'])
         cercle = cercles[cercle_num-1]
-        tree_num = int(request.POST['tree_num'])
-        tree = trees[tree_num-1]
+        
         chosen_language = int(request.POST['chosen_language'])
         language_user = language[chosen_language-1]
         tree_count = int(request.POST['tree_count'])
