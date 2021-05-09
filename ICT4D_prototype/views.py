@@ -52,7 +52,9 @@ def data(request):
         
         rec_commune=request.FILES['rec_commune']
         rec_location=request.FILES['rec_location']
-        rec_name=request.FILES['rec_name']
+        caller = request.POST['existingcaller']
+        if caller == 'yes':
+            rec_name=request.FILES['rec_name']
 
 
         tree_num = int(request.POST['tree_num'])
@@ -67,7 +69,8 @@ def data(request):
 
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
-        instance.rec_name = rec_name
+        if caller == 'yes':
+            instance.rec_name = rec_name
         #instance.cercle_num = cercle
         instance.tree_num = tree
         #instance.tree_count = tree_count
