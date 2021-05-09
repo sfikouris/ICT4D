@@ -81,7 +81,7 @@ def data(request):
 
 def numberCheck(request):
     phoneNumber = request.GET['phone']
-    if treeaid.objects.filter(phone_number=phoneNumber).exists():
+    if treeaid.objects.filter(phone=phoneNumber).exists():
         return HttpResponse(status=200)
     else:
         return HttpResponse(status=404)
