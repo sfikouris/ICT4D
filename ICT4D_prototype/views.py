@@ -52,7 +52,7 @@ def data(request):
         
         rec_commune=request.FILES['rec_commune']
         rec_location=request.FILES['rec_location']
-        #rec_name=request.FILES['rec_name']
+        rec_name=request.FILES['rec_name']
 
 
         tree_num = int(request.POST['tree_num'])
