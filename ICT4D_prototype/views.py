@@ -77,9 +77,10 @@ def data(request):
         #instance.chosen_language = chosen_language
         instance.phone = phone_number
         instance.save()
+        return HttpResponse(status=200)
         
    
-    return HttpResponse(status=200)
+    return HttpResponse(status=400)
 
 
 def numberCheck(request):
