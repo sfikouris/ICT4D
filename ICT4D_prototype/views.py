@@ -58,21 +58,21 @@ def data(request):
         tree_num = int(request.POST['tree_num'])
         tree = trees[tree_num-1]
 
-        cercle_num = int(request.POST['cercle_num'])
-        cercle = cercles[cercle_num-1]
+        #cercle_num = int(request.POST['cercle_num'])
+        #cercle = cercles[cercle_num-1]
 
-        tree_count = request.POST['tree_count']
-        chosen_language = request.POST['chosen_language']
-        phone_number = request.POST['phone']
+        #tree_count = request.POST['tree_count']
+        #chosen_language = request.POST['chosen_language']
+        #phone_number = request.POST['phone']
 
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
         #instance.rec_name = rec_name
-        instance.cercle_num = cercle
+        #instance.cercle_num = cercle
         instance.tree_num = tree
-        instance.tree_count = tree_count
-        instance.chosen_language = chosen_language
-        instance.phone = phone_number
+        #instance.tree_count = tree_count
+        #instance.chosen_language = chosen_language
+        #instance.phone = phone_number
         instance.save()
         
    
