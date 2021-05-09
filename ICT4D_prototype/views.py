@@ -67,7 +67,7 @@ def data(request):
 
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
-        #instance.rec_name = rec_name
+        instance.rec_name = rec_name
         #instance.cercle_num = cercle
         instance.tree_num = tree
         #instance.tree_count = tree_count
