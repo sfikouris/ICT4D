@@ -9,4 +9,6 @@ urlpatterns = [
     path('numberCheck', views.numberCheck, name='ICT4_prototype-numberCheck'),
     path('result', views.result, name='result'),
     path('map', views.map, name='map'),
+    path('dashboard', views.dashboard_with_pivot, name="dashboard_with_pivot"),
+    path('dashboardata', views.pivot_data, name='pivot_data'),
 ]

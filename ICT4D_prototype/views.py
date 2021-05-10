@@ -5,6 +5,9 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from .form import DocumentForm
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.core import serializers
 
 import folium
 
@@ -138,3 +141,11 @@ def map(request):
     context = {'my_map': mstring}
 
     return render(request, 'map.html', context)
+
+def dashboard_with_pivot(request):
+    return render(request, 'dashboard_with_pivot.html', {})
+
+def pivot_data(request):
+    dataset = Document.objects.all()
+    data = serializers.serialize('json', dataset)
+    return JsonResponse(data, safe=False)
