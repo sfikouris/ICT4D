@@ -1,8 +1,19 @@
 from django.db import models
 
-cercles = ["Sikasso","Koutiala","Bougouni","Kadiolo","Kolondiéba","Yanfolila","Yorosso"]
-trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khaya senegalensis","Dalbergia melanoxylon", "Unknown"]
-languages= ["en", "br", "fr"]
+cercles = [("Sikasso","Sikasso"),
+           ("Koutiala","Koutiala"),
+           ("Bougouni","Bougouni"),
+           ("Kadiolo","Kadiolo",),
+           ("Kolondiéba","Kolondiéba"),
+           ("Yanfolila","Yanfolila"),
+           ("Yorosso","Yorosso")]
+trees = [("Pterocarpus erinaceus","Pterocarpus erinaceus"),
+         ("Terminalia habeensis","Terminalia habeensis"),
+         ("Afzelia Africana","Afzelia Africana"),
+         ("Khaya senegalensis","Khaya senegalensis"),
+         ("Dalbergia melanoxylon","Dalbergia melanoxylon"),
+         ("Unknown","Unknown")]
+languages= [("en","english"),("br","bambara"),("fr","france")]
 
 
 class Person(models.Model):
