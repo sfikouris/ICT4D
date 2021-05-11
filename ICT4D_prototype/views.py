@@ -57,7 +57,7 @@ def data(request):
         
         rec_commune=request.FILES['rec_commune']
         rec_commune.name = str(phone_number) + str(instance.time)
-        
+        src_commune = "media/commune/" + str(phone_number) + str(instance.time) +".wav"
         rec_location=request.FILES['rec_location']
         caller = request.POST['existingcaller']
 
@@ -83,6 +83,7 @@ def data(request):
         instance.tree_count = tree_count
         instance.chosen_language = chosen_language
         instance.phone = phone_number
+        instance.src_commune = src_commune
         instance.save()
         return HttpResponse(status=200)
         
