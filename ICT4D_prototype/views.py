@@ -55,12 +55,14 @@ def data(request):
         
         phone_number = request.POST['phone']
         
-        rec_commune=request.FILES['rec_commune'] = str(phone_number) + str(instance.time)
+        rec_commune=request.FILES['rec_commune']
+        rec_commune.name = str(phone_number) + str(instance.time)
+        
         rec_location=request.FILES['rec_location']
         caller = request.POST['existingcaller']
 
         if caller == 0:
-            rec_name=request.FILES['rec_name'].name  
+            rec_name=request.FILES['rec_name'] 
 
 
         tree_num = int(request.POST['tree_num'])
