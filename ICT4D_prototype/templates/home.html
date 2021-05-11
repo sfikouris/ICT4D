@@ -32,7 +32,7 @@
         </datalist><br>
         
         How many trees are there? <input type = "text" name="tree_num"><br> 
-
+        <input type="file" id="myFile" name="filename">
         <input type = "submit">
     </form><br>
     
@@ -43,6 +43,8 @@
             <th>Tree</th>
             <th>Tree count</th>
             <th>rec</th>
+            <th>time</th>
+            <th>time_str</th>
         </tr>
         {% for item in query_results %}
         <tr> 
@@ -50,6 +52,8 @@
             <td>{{ item.cercle }}</td>
             <td>{{ item.tree }}</td>
             <td>{{ item.tree_count }}</td>
+            <td>{{ item.time }}</td>
+            <td>{{ item.time_str }}</td>
             <td> <audio id="player" src="media/recordings/EN/2EN.wav" type="audio/wav"></audio>
                 <button onclick="document.getElementById('player').play()">play</button> </td>
         </tr>

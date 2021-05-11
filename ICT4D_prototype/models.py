@@ -27,6 +27,8 @@ class treeaid(models.Model):
     tree_count = models.IntegerField()
     phone_number = models.CharField(max_length=30)
 
+    
+
 class Document(models.Model):
     rec_commune = models.FileField(upload_to='commune/',null=True)
     rec_location  = models.FileField(upload_to='location/',null=True)
@@ -36,8 +38,7 @@ class Document(models.Model):
     tree_count = models.IntegerField()
     chosen_language = models.CharField(max_length=30, null=True, choices=languages)
     phone = models.CharField(max_length=30, null=True)
-    time = models.DateTimeField(auto_now_add=True)
     src_commune = models.CharField(max_length=150, null=True)
     src_location = models.CharField(max_length=150, null=True)
-    src_name  = models.CharField(max_length=150, null=True)
+    src_name = models.CharField(max_length=150, null=True)
 
