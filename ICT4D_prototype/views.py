@@ -53,11 +53,14 @@ def data(request):
         #form.save()
         instance = Document()
         
-        rec_commune=request.FILES['rec_commune']
+        phone_number = request.POST['phone']
+        
+        rec_commune=request.FILES['rec_commune'] = str(phone_number) + str(instance.time)
         rec_location=request.FILES['rec_location']
         caller = request.POST['existingcaller']
+
         if caller == 0:
-            rec_name=request.FILES['rec_name']
+            rec_name=request.FILES['rec_name'].name  
 
 
         tree_num = int(request.POST['tree_num'])
@@ -68,7 +71,6 @@ def data(request):
 
         tree_count = request.POST['tree_count']
         chosen_language = request.POST['chosen_language']
-        phone_number = request.POST['phone']
 
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
