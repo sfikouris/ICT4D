@@ -122,7 +122,15 @@ def map(request):
         tiles='Stamen Terrain'
     )
     mstring = m._repr_html_()
-    context = {'my_map': mstring}
+
+    query_results = treeaid_databese.objects.order_by('phone_number') 
+    query_results_phone = Document.objects.order_by('phone') 
+
+    context = {
+        'my_map': mstring,
+        "query_results" : query_results ,
+        "query_results_phone" : query_results_phone
+    }
 
     return render(request, 'map.html', context)
 

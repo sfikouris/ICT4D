@@ -13,7 +13,43 @@
         </script>
     </div>
     <div style="margin-left: 50%; height: 800px; background: white;">
-        table here
+      <h1>Data collected from online form.</h1>
+      <table>
+          <tr>
+              <th>Phone number</th>
+              <th>Cercle</th>
+              <th>Tree</th>
+              <th>Tree count</th>
+          </tr>
+          {% for item in query_results %}
+          <tr> 
+              <td>{{ item.phone_number }}</td>
+              <td>{{ item.cercle }}</td>
+              <td>{{ item.tree }}</td>
+              <td>{{ item.tree_count }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  
+      <h1>Data collected from Calling Center.</h1>
+      <table>
+          <tr>
+              <th>Phone number</th>
+              <th>Cercle</th>
+              <th>Tree</th>
+              <th>Tree count</th>
+          </tr>
+          {% for i in query_results_phone %}
+          <tr> 
+              <td>{{ i.phone }}</td>
+              <td>{{ i.cercle_num }}</td>
+              <td>{{ i.tree_num }}</td>
+              <td>{{ i.tree_count }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  
+
     </div>
 </div>
 
