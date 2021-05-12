@@ -8,7 +8,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.core import serializers
-
+import datetime
 import folium
 
 
@@ -56,8 +56,8 @@ def data(request):
     rec_commune=request.FILES['rec_commune']
     rec_location=request.FILES['rec_location']
     caller = request.POST['existingcaller']
-    if caller == 0:
-        rec_name=request.FILES['rec_name']
+    #if caller == 0:
+    rec_name=request.FILES['rec_name']
 
 
     tree_num = int(request.POST['tree_num'])
@@ -70,15 +70,20 @@ def data(request):
     chosen_language = request.POST['chosen_language']
     phone_number = request.POST['phone']
 
+    x = datetime.datetime.now()
+    rec_commune.name = str(phone_number) + str(x.hour) + str(x.minute)
+    src_commune = "media/commune/" + rec_commune.name + ".wav"
+
     instance.rec_commune = rec_commune
     instance.rec_location = rec_location
-    if caller == 0:
-        instance.rec_name = rec_name
+    #if caller == 0:
+    instance.rec_name = rec_name
     instance.cercle_num = cercle
     instance.tree_num = tree
     instance.tree_count = tree_count
     instance.chosen_language = chosen_language
     instance.phone = phone_number
+    instance.src_commune = src_commune
     instance.save()
     return HttpResponse(status=200)
         
