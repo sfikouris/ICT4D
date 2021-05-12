@@ -23,7 +23,12 @@ trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khay
 def home(request):
     query_results = treeaid_databese.objects.order_by('phone_number') 
     query_results_phone = Document.objects.order_by('phone') 
-    return render(request, 'home.html', {'query_results' : query_results, query_results_phone : 'query_results_phone' })
+
+    context = {
+    "query_results" : query_results ,
+    "query_results_phone" : query_results_phone
+    }
+    return render(request, 'home.html', context)
 
 #the table that stores and takes in web reported trees.
 def result(request):
@@ -40,9 +45,13 @@ def result(request):
     data.save()
 
     query_results = treeaid_databese.objects.order_by('phone_number') 
+    query_results_phone = Document.objects.order_by('phone') 
+    context = {
+    "query_results" : query_results ,
+    "query_results_phone" : query_results_phone
+    }
 
-
-    return render(request,"home.html",{'query_results' : query_results})
+    return render(request,"home.html",context)
 
 #the webpage set-up for recieving post messages from the vxml server
 @csrf_exempt

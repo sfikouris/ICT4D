@@ -61,12 +61,12 @@
             <th>Tree</th>
             <th>Tree count</th>
         </tr>
-        {% for item in query_results_phone %}
+        {% for i in query_results_phone %}
         <tr> 
-            <td>{{ item.phone }}</td>
-            <td>{{ item.cercle_num }}</td>
-            <td>{{ item.tree_num }}</td>
-            <td>{{ item.tree_count }}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.cercle_num }}</td>
+            <td>{{ i.tree_num }}</td>
+            <td>{{ i.tree_count }}</td>
         </tr>
         {% endfor %}
     </table>
