@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1">
+
+  <var name="phone" expr="session.telephone.ani"/>
+  <var name="chosen_language" expr="'fr'"/>
+  <var name="cercle_num" expr="0"/>
+  <var name="tree_num" expr="0"/>
+  <var name="tree_count" expr="0"/>
+  <var name="rec_name"/>
+  <var name="rec_commune"/>
+  <var name="rec_location"/>
+  <var name="existingcaller"/>
+
+  <catch event="error.badfetch.http.404">
+      <assign name="existingcaller" expr="0"/>
+      <goto next="#initiative"/>
+  </catch>
+
+  <error>
+    <audio src="http://18.133.201.91:8080/media/recordings/FR/AppcrashFR.wav"/>
+  </error>
+
+  <form id="numberCheck">
+    <block>
+      <data name="mynumberCheck" src="http://18.133.201.91:8080/numberCheck" method="GET" namelist="phone" />
+      <assign name="existingcaller" expr="1"/>
+      <goto next="#cercle"/>
+    </block>
+  </form>
+
+  <form id="initiative">
+    <block>
+      <prompt>
+        <audio src="http://18.133.201.91:8080/media/recordings/FR/2FR.wav"/>
+      </prompt>
+      <goto next="#enter_name"/>
+    </block>
+  </form>
+
+  <form id="enter_name">
+    <block>
+      <prompt>
+        <audio src="http://18.133.201.91:8080/media/recordings/FR/3FR.wav"/>
+      </prompt>
+      <goto next="#name_record"/>
+    </block>
+  </form>
+
+  <form id="name_record">
+      <record name="rec_namer" beep="true" dtmfterm="true" finalsilence="1s" maxtime="10s">
+     <filled>
+      <assign name="rec_name" expr="rec_namer"/>
+      <goto next="#cercle"/>
+     </filled>
+     <noinput>
+       <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+     </noinput>
+   </record>
+  </form>
+
+  <form id="cercle">
+     <field name="cercle_num_field">
+       <prompt>
+         <audio src="http://18.133.201.91:8080/media/recordings/FR/5FR.wav"/> <break strength="weak"/>
+       </prompt>
+       <option dtmf="1" value="1"> </option>
+       <option dtmf="2" value="2"> </option>
+       <option dtmf="3" value="3"> </option>
+       <option dtmf="4" value="4"> </option>
+       <option dtmf="5" value="5"> </option>
+       <option dtmf="6" value="6"> </option>
+       <option dtmf="7" value="7"> </option>
+       <filled>
+         <assign name="cercle_num" expr="cercle_num_field"/>
+         <goto next="#cercle_ver"/>
+       </filled>
+       <noinput>
+         <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+       </noinput>
+     </field>
+   </form>
+
+   <form id="cercle_ver">
+     <block>
+       <prompt>
+         <audio src="http://18.133.201.91:8080/media/recordings/FR/6.1FR.wav"/>
+       </prompt>
+         <if cond="cercle_num == 1">
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/63FR.wav"/>
+           <elseif cond="cercle_num == 2"/>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/64FR.wav"/>
+           <elseif cond="cercle_num == 3"/>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/65FR.wav"/>
+           <elseif cond="cercle_num == 4"/>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/66FR.wav"/>
+           <elseif cond="cercle_num == 5"/>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/67FR.wav"/>
+           <elseif cond="cercle_num == 6"/>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/68FR.wav"/>
+           <else />
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/69FR.wav"/>
+         </if>
+        <prompt timeout="2s">
+         <audio src="http://18.133.201.91:8080/media/recordings/FR/6.2FR.wav"/>
+       </prompt>
+      </block>
+      <field name="cercle_ver_num">
+       <option dtmf="0" value="re-do"></option>
+       <filled>
+         <goto next="#cercle" />
+       </filled>
+       <noinput>
+         <goto next="#enter_commune"/>
+       </noinput>
+     </field>
+   </form>
+
+   <form id="enter_commune">
+    <block>
+      <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/7FR.wav"/> </prompt>
+    <goto next="#commune_record"/>
+    </block>
+   </form>
+
+   <form id="commune_record">
+     <record name="rec_communer" beep="true" dtmfterm="true" finalsilence="2s" maxtime="10s">
+       <filled>
+         <assign name="rec_commune" expr="rec_communer"/>
+         <goto next="#enter_species"/>
+       </filled>
+       <noinput>
+         <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+       </noinput>
+     </record>
+   </form>
+
+       <form id="enter_species">
+          <field name="tree_num_field">
+            <prompt>
+              <audio src="http://18.133.201.91:8080/media/recordings/FR/8-1FR.wav/"/> <break strength="weak"/>
+            </prompt>
+            <option dtmf="1" value="1"> </option>
+            <option dtmf="2" value="2"> </option>
+            <option dtmf="3" value="3"> </option>
+            <option dtmf="4" value="4"> </option>
+            <option dtmf="5" value="5"> </option>
+            <option dtmf="6" value="6"> </option>
+            <filled>
+              <assign name="tree_num" expr="tree_num_field"/>
+              <goto next="#tree_amount"/>
+            </filled>
+            <noinput>
+              <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+            </noinput>
+          </field>
+        </form>
+
+      <form id="tree_amount">
+       <field name="tree_count_field" type="digits?length=1">
+        <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/9FR.wav"/> </prompt>
+         <filled>
+           <if cond="tree_count_field > 3">
+             <assign name="tree_count" expr="4"/>
+             <goto next="#tree_and_number"/>
+           </if>
+           <assign name="tree_count" expr="tree_count_field"/>
+          <goto next="#tree_and_number"/>
+         </filled>
+         <noinput>
+           <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+         </noinput>
+       </field>
+      </form>
+
+      <form id="tree_and_number">
+        <block>
+        <prompt>
+           <audio src="http://18.133.201.91:8080/media/recordings/FR/101FR.wav"/>
+        </prompt>
+        <if cond="tree_count == 1">
+          <audio src="http://18.133.201.91:8080/media/recordings/FR/OneFR.wav"/>
+          <elseif cond="tree_count == 2"/>
+            <audio src="http://18.133.201.91:8080/media/recordings/FR/TwoFR.wav"/>
+            <elseif cond="tree_count == 3"/>
+            <audio src="http://18.133.201.91:8080/media/recordings/FR/threeFR.wav"/>
+            <else />
+            <audio src="http://18.133.201.91:8080/media/recordings/FR/fourormoreFR.wav"/>
+        </if>
+         <if cond="tree_num == 1">
+           <audio src="http://18.133.201.91:8080/media/recordings/EN/8-2EN.wav/" />
+         <elseif cond="tree_num == 2"/>
+         <audio src="http://18.133.201.91:8080/media/recordings/EN/8-3EN.wav/" />
+         <elseif cond="tree_num == 3"/>
+         <audio src="http://18.133.201.91:8080/media/recordings/EN/8-4EN.wav/" />
+         <elseif cond="tree_num == 4"/>
+         <audio src="http://18.133.201.91:8080/media/recordings/EN/8-5EN.wav/" />
+         <elseif cond="tree_num == 5"/>
+         <audio src="http://18.133.201.91:8080/media/recordings/EN/8-6EN.wav/" />
+         <else />
+         <audio src="http://18.133.201.91:8080/media/recordings/EN/8-7EN.wav/" />
+        </if>
+      </block>
+      <field name="tree_and_number">
+        <prompt timeout="2s">
+         <audio src="http://18.133.201.91:8080/media/recordings/FR/102FR.wav"/>
+       </prompt>
+       <option dtmf="0" value="re-do"></option>
+       <filled>
+         <goto next="#enter_species" />
+       </filled>
+       <noinput>
+         <goto next="#record_location"/>
+       </noinput>
+     </field>
+      </form>
+
+    <form id="record_location">
+     <block>
+       <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/11FR.wav"/> </prompt>
+     <goto next="#recording_location"/>
+     </block>
+    </form>
+
+    <form id="recording_location">
+      <record name="rec_locationr" beep="true" dtmfterm="true" finalsilence="2s" maxtime="30s">
+        <filled>
+          <assign name="rec_location" expr="rec_locationr"/>
+          <goto next="#data"/>
+        </filled>
+        <noinput>
+          <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/NoResponseFR.wav"/> </prompt>
+        </noinput>
+      </record>
+    </form>
+
+    <form id="data">
+      <block>
+        <if cond="existingcaller == 1">
+          <assign name="rec_name" expr="rec_commune"/>
+        </if>
+          <data namelist="rec_location rec_commune rec_name tree_num existingcaller phone cercle_num chosen_language tree_count" src="http://18.133.201.91:8080/data" enctype="multipart/form-data" method="post"/>
+        <goto next="#end"/>
+      </block>
+    </form>
+
+  <form id="end">
+    <block>
+      <prompt>
+        <audio src="http://18.133.201.91:8080/media/recordings/FR/12FR.wav"/>
+      </prompt>
+    </block>
+    <exit/>
+  </form>
+
+</vxml>

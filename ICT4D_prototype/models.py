@@ -1,5 +1,6 @@
 from django.db import models
 
+#these are used in the choices parameters
 cercles = [("Sikasso","Sikasso"),
            ("Koutiala","Koutiala"),
            ("Bougouni","Bougouni"),
@@ -15,18 +16,14 @@ trees = [("Pterocarpus erinaceus","Pterocarpus erinaceus"),
          ("Unknown","Unknown")]
 languages= [("en","english"),("br","bambara"),("fr","france")]
 
-
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    voice = models.FileField(upload_to='voicexml/')
-
+#the treeaid model that stores web recorded tree reportings
 class treeaid(models.Model):
     cercle = models.CharField(max_length=100)
     tree = models.CharField(max_length=100)
     tree_count = models.IntegerField()
     phone_number = models.CharField(max_length=30)
 
+#the Document model that stores vxml entries
 class Document(models.Model):
     rec_commune = models.FileField(upload_to='media/',null=True)
     rec_location  = models.FileField(upload_to='media/',null=True)

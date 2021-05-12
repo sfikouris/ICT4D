@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1">
+
+  <menu id="menu_language" dtmf="true">
+  <property name="bargein" value="false"/>
+    <!-- 1FR English (Welcome, please select a language) / French (Bienvenue, veuillez sélectionner une langue)
+- Press 1 for English
+- French (Press 2 for French) Appuyez sur 2 pour le français -->
+   <prompt> <audio src="http://18.133.201.91:8080/media/recordings/FR/1FR.wav"/> <audio src="http://18.133.201.91:8080/media/recordings/BR/1.wav"/> </prompt>
+   <choice next="Group9_Final_EN.vxml"/>
+   <choice next="Group9_Final_FR.vxml"/>
+   <choice next="Group9_Final_BR.vxml"/>
+  </menu>
+
+</vxml>
