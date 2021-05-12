@@ -55,14 +55,10 @@ def data(request):
     form = DocumentForm(request.POST, request.FILES)
     if form.is_valid():
         #form.save()
-        instance = Document()
-        x = datetime.datetime.now()
-        
-        phone_number = request.POST['phone']
+      
         
         rec_commune=request.FILES['rec_commune']
-        rec_commune.name = str(phone_number) + str(x.hour) + str(x.minute) 
-        src_commune = "media/commune/" + rec_commune.name + ".wav"
+
 
         rec_location=request.FILES['rec_location']
         caller = request.POST['existingcaller']
@@ -79,7 +75,14 @@ def data(request):
 
         tree_count = request.POST['tree_count']
         chosen_language = request.POST['chosen_language']
-
+        phone_number = request.POST['phone']
+        
+        x = datetime.datetime.now()
+        
+        rec_commune.name = str(phone_number) + str(x.hour) + str(x.minute) 
+        src_commune = "media/commune/" + rec_commune.name + ".wav"
+        instance = Document()
+        
         instance.rec_commune = rec_commune
         instance.rec_location = rec_location
         if caller == 0:
