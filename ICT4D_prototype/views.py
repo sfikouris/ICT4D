@@ -50,7 +50,7 @@ def result(request):
 def data(request):
     form = DocumentForm(request.POST, request.FILES)
     if form.is_valid():
-        #form.save()
+        
         instance = Document()
         
         rec_commune=request.FILES['rec_commune']
