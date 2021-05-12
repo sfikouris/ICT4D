@@ -8,11 +8,11 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.core import serializers
-import datetime
+#import datetime
 import folium
 
 
-from ICT4D_prototype.models import treeaid
+from ICT4D_prototype.models import treeaid_databese
 from ICT4D_prototype.models import Document
 
 
@@ -21,9 +21,9 @@ trees = ["Pterocarpus erinaceus","Terminalia habeensis","Afzelia Africana","Khay
 
 #the home page of the application (non admin)
 def home(request):
-    query_results = treeaid.objects.order_by('phone_number') 
-    #query_results = treeaid.objects.all()
-    return render(request, 'home.html', {'query_results' : query_results})
+    query_results = treeaid_databese.objects.order_by('phone_number') 
+    query_results_phone = Document.objects.order_by('phone') 
+    return render(request, 'home.html', {'query_results' : query_results, query_results_phone : 'query_results_phone' })
 
 #the table that stores and takes in web reported trees.
 def result(request):
@@ -32,14 +32,14 @@ def result(request):
     phone_number = request.POST['phone_number']
     tree_count = request.POST['tree_num']
     
-    data = treeaid()
+    data = treeaid_databese()
     data.cercle = cercle
     data.tree = tree
     data.tree_count = tree_count
     data.phone_number = phone_number
     data.save()
 
-    query_results = treeaid.objects.order_by('phone_number') 
+    query_results = treeaid_databese.objects.order_by('phone_number') 
 
 
     return render(request,"home.html",{'query_results' : query_results})
@@ -69,9 +69,9 @@ def data(request):
     chosen_language = request.POST['chosen_language']
     phone_number = request.POST['phone']
 
-    x = datetime.datetime.now()
-    rec_commune.name = str(phone_number) + str(x.hour) + str(x.minute)
-    src_commune = "media/commune/" + rec_commune.name + ".wav"
+    #x = datetime.datetime.now()
+    #rec_commune.name = str(phone_number) + str(x.hour) + str(x.minute)
+    #src_commune = "media/commune/" + rec_commune.name + ".wav"
 
     instance.rec_commune = rec_commune
     instance.rec_location = rec_location
@@ -82,7 +82,7 @@ def data(request):
     instance.tree_count = tree_count
     instance.chosen_language = chosen_language
     instance.phone = phone_number
-    instance.src_commune = src_commune
+    #instance.src_commune = src_commune
     instance.save()
     return HttpResponse(status=200)
         

@@ -17,7 +17,7 @@ trees = [("Pterocarpus erinaceus","Pterocarpus erinaceus"),
 languages= [("en","english"),("br","bambara"),("fr","france")]
 
 #the treeaid model that stores web recorded tree reportings
-class treeaid(models.Model):
+class treeaid_databese(models.Model):
     cercle = models.CharField(max_length=100)
     tree = models.CharField(max_length=100)
     tree_count = models.IntegerField()
@@ -33,5 +33,5 @@ class Document(models.Model):
     tree_count = models.IntegerField()
     chosen_language = models.CharField(max_length=30, null=True, choices=languages)
     phone = models.CharField(max_length=30, null=True)
-    src_commune = models.CharField(max_length=100, null=True)
+    #src_commune = models.CharField(max_length=100, null=True)
 

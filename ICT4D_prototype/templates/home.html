@@ -35,7 +35,7 @@
 
         <input type = "submit">
     </form><br>
-    
+    <h1>Data collected from online form.</h1>
     <table>
         <tr>
             <th>Phone number</th>
@@ -48,6 +48,24 @@
             <td>{{ item.phone_number }}</td>
             <td>{{ item.cercle }}</td>
             <td>{{ item.tree }}</td>
+            <td>{{ item.tree_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Data collected from Calling Center.</h1>
+    <table>
+        <tr>
+            <th>Phone number</th>
+            <th>Cercle</th>
+            <th>Tree</th>
+            <th>Tree count</th>
+        </tr>
+        {% for item in query_results_phone %}
+        <tr> 
+            <td>{{ item.phone }}</td>
+            <td>{{ item.cercle_num }}</td>
+            <td>{{ item.tree_num }}</td>
             <td>{{ item.tree_count }}</td>
         </tr>
         {% endfor %}
